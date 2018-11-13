@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.CadastroUsuario">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="10sp">
+            <EditText
+                android:paddingTop="10sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtCadEmail"
+                android:inputType="textEmailAddress"
+                android:hint="E-mail"/>
+            <EditText
+                android:paddingTop="10sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtCadSenha"
+                android:hint="Senha"
+                android:inputType="textPassword"/>
+            <EditText
+                android:paddingTop="10sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtCadConfirmarSenha"
+                android:hint="Confirmar Senha"
+                android:inputType="textPassword"/>
+            <EditText
+                android:paddingTop="10sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtCadNome"
+                android:hint="Nome"
+                android:inputType="textCapCharacters"/>
+            <EditText
+                android:paddingTop="10sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtCadCPF"
+                android:hint="CPF"
+                android:inputType="numberDecimal"/>
+
+            <RadioGroup
+                android:id="@+id/edtradioSex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <RadioButton
+                    android:id="@+id/radioUSUARIO"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="USUARIO"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:id="@+id/radioLOJISTA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LOJISTA" />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btnGravar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CADASTRAR"/>
+
+            <Button
+                android:id="@+id/btnCancelarCad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CANCELAR"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

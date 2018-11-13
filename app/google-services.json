@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "226512460982",
+    "firebase_url": "https://prandium5-8df65.firebaseio.com",
+    "project_id": "prandium5-8df65",
+    "storage_bucket": "prandium5-8df65.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:226512460982:android:b6c4c3e2520dd316",
+        "android_client_info": {
+          "package_name": "com.example.willian.prandium5"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "226512460982-6u4u6o4ch3k8tth7qarpav2p1fbbef9u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.willian.prandium5",
+            "certificate_hash": "c4af80045e44aee91bc1157431944edf5b90066e"
+          }
+        },
+        {
+          "client_id": "226512460982-3pqvinur42grogq4391kobv4eupfkamb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeQJRR9eCl7lHGR5SX5C8mkEmOkZzfiLI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "226512460982-3pqvinur42grogq4391kobv4eupfkamb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
