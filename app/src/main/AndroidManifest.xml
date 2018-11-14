@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".Activity.CadastroUsuario" />
         <activity android:name=".Activity.MenuLojistaActivity" />
-        <activity android:name=".Activity.MenuUsuarioActivity"></activity>
+        <activity android:name=".Activity.MenuUsuarioActivity" />
+        <activity android:name=".Activity.MeuPerfilActivity"></activity>
     </application>
 
 </manifest>

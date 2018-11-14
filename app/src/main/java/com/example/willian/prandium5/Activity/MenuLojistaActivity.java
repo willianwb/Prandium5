@@ -12,6 +12,12 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MenuLojistaActivity extends AppCompatActivity {
 
     private Button btnsair;
+    private Button VerPromocao;
+    private Button Pedido;
+    private Button MapadeCalor;
+    private Button addCred;
+    private Button Historico;
+    private Button VerPerfil;
     private FirebaseAuth autenticacao;
 
     @Override
@@ -21,6 +27,15 @@ public class MenuLojistaActivity extends AppCompatActivity {
 
         btnsair = (Button) findViewById(R.id.btnSairLojista);
         autenticacao = FirebaseAuth.getInstance();
+
+        VerPerfil = (Button) findViewById(R.id.btnVerPerfil) ;
+
+        VerPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MeuPerfil();
+            }
+        });
 
 
         btnsair.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +55,11 @@ public class MenuLojistaActivity extends AppCompatActivity {
         autenticacao.signOut();
         abrirTelaInicial();
         finish();
+    }
+
+    private void MeuPerfil(){
+        Intent intent = new Intent(MenuLojistaActivity.this,MeuPerfilActivity.class);
+        startActivity(intent);
     }
 
 }

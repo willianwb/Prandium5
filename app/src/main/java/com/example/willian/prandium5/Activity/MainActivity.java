@@ -1,7 +1,9 @@
 package com.example.willian.prandium5.Activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView edtAbreCadastro;
     private Button btnLogin;
     private Usuario usuario;
+    private TextView txtRecuperarSenha;
+    private AlertDialog alerta;
 
     private DatabaseReference referenciaFirebase;
     private String tipoUsuario;
@@ -47,19 +51,31 @@ public class MainActivity extends AppCompatActivity {
         edtSenhaLogin = (EditText) findViewById(R.id.edtSenha);
         btnLogin = (Button) findViewById(R.id.btnLogar);
         edtAbreCadastro = (TextView) findViewById(R.id.edtAbreCadastro);
+        txtRecuperarSenha = (TextView) findViewById(R.id.txtRecuperarSenha);
+
+        final EditText editTextEmail = new EditText(MainActivity.this);
+        editTextEmail.setHint("exemplo@exemplo.com");
 
         if(usuarioLogado()){
 
-            String email = autenticacao.getCurrentUser().getEmail().toString();
+            String emailcheck = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
             referenciaFirebase = FirebaseDatabase.getInstance().getReference();
-
-            referenciaFirebase.child("usuario").orderByChild("email").equalTo(email.toString()).addValueEventListener(new ValueEventListener() {
+            referenciaFirebase.child("usuarios").orderByChild("email").equalTo(emailcheck.toString()).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                     for(DataSnapshot postSnapshot : dataSnapshot.getChildren()){
-                        tipoUsuario = postSnapshot.child("ID_TIPO").getValue().toString();
+                        tipoUsuario = postSnapshot.child("id_TIPO").getValue().toString();
+
+                        if(tipoUsuario=="Lojista"){
+                            Intent intent = new Intent(MainActivity.this, MenuLojistaActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }else{
+                            Intent intent = new Intent(MainActivity.this, MenuUsuarioActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
                     }
                 }
 
@@ -69,13 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-            if(tipoUsuario.equals("Lojista")){
-                Intent intentMinhaConta = new Intent(MainActivity.this,MenuLojistaActivity.class);
-                abrirNovaActivity(intentMinhaConta);
-            }else{
-                Intent intentMinhaConta = new Intent(MainActivity.this,MenuUsuarioActivity.class);
-                abrirNovaActivity(intentMinhaConta);
-            }
+
         }else {
             btnLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -87,6 +97,8 @@ public class MainActivity extends AppCompatActivity {
                         usuario.setSenha(edtSenhaLogin.getText().toString());
 
                         validarLogin();
+
+
                     } else {
                         Toast.makeText(MainActivity.this, "Preencha os campos de E-mail e Senha!", Toast.LENGTH_LONG).show();
                     }
@@ -100,6 +112,68 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+
+
+        txtRecuperarSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setCancelable(false);
+                builder.setTitle("Recuperar Senha");
+                builder.setMessage("Informe seu e-mail");
+                builder.setView(editTextEmail);
+
+                if(!editTextEmail.getText().equals("")){
+
+                    builder.setPositiveButton("Recuperar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        autenticacao = FirebaseAuth.getInstance();
+                        String emailrecuperar = editTextEmail.getText().toString();
+
+
+                        autenticacao.sendPasswordResetEmail(emailrecuperar).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful()){
+                                    Toast.makeText(MainActivity.this,"Em instantes você recebera um e-mail!",Toast.LENGTH_SHORT).show();
+                                    Intent intent = getIntent();
+                                    finish();
+                                    startActivity(intent);
+                                }else{
+                                    Toast.makeText(MainActivity.this,"Falha ao enviar e-mail!",Toast.LENGTH_SHORT).show();
+                                    Intent intent = getIntent();
+                                    finish();
+                                    startActivity(intent);
+                                }
+                            }
+                        });
+                        }
+                    });
+
+                    builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = getIntent();
+                            finish();
+                            startActivity(intent);
+                        }
+                    });
+                }else{
+                    Toast.makeText(MainActivity.this,"Preencha o campo de e-mail!",Toast.LENGTH_SHORT).show();
+                }
+
+
+                alerta = builder.create();
+                alerta.show();
+
+
+            }
+        });
+
+
     }
 
 
@@ -112,18 +186,26 @@ public class MainActivity extends AppCompatActivity {
 
                 if(task.isSuccessful()){
 
-                    Toast.makeText(MainActivity.this,"Login Efetuado com sucesso!",Toast.LENGTH_LONG).show();
-
-                    String email = autenticacao.getCurrentUser().getEmail().toString();
+                    String emailcheck = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
                     referenciaFirebase = FirebaseDatabase.getInstance().getReference();
-
-                    referenciaFirebase.child("usuario").orderByChild("email").equalTo(email.toString()).addValueEventListener(new ValueEventListener() {
+                    referenciaFirebase.child("usuarios").orderByChild("email").equalTo(emailcheck.toString()).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                             for(DataSnapshot postSnapshot : dataSnapshot.getChildren()){
-                                tipoUsuario = postSnapshot.child("ID_TIPO").getValue().toString();
+                                tipoUsuario = postSnapshot.child("id_TIPO").getValue().toString();
+
+                                if(tipoUsuario=="Lojista"){
+                                    Toast.makeText(MainActivity.this,"Login Efetuado com sucesso!",Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(MainActivity.this, MenuLojistaActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }else{
+                                    Toast.makeText(MainActivity.this,"Login Efetuado com sucesso!",Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(MainActivity.this, MenuUsuarioActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
                             }
                         }
 
@@ -132,17 +214,6 @@ public class MainActivity extends AppCompatActivity {
 
                         }
                     });
-
-
-
-                    if(tipoUsuario.equals("Lojista")){
-                        Intent intentMinhaConta = new Intent(MainActivity.this,MenuLojistaActivity.class);
-                        abrirNovaActivity(intentMinhaConta);
-                    }else{
-                        Intent intentMinhaConta = new Intent(MainActivity.this,MenuUsuarioActivity.class);
-                        abrirNovaActivity(intentMinhaConta);
-                    }
-
                 }else{
                     Toast.makeText(MainActivity.this,"Usuário ou Senha Inválidos! Tente Novamente!",Toast.LENGTH_LONG).show();
                 }

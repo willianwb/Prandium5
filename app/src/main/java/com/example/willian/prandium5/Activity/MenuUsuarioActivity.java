@@ -12,12 +12,20 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MenuUsuarioActivity extends AppCompatActivity {
 
     private Button btnsair;
+    private Button VerPromocao;
+    private Button Pedido;
+    private Button MapadeCalor;
+    private Button addCred;
+    private Button Historico;
+    private Button VerPerfil;
     private FirebaseAuth autenticacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_usuario);
+
+        VerPerfil = (Button) findViewById(R.id.btnVerPerfil) ;
 
         btnsair = (Button) findViewById(R.id.btnSair);
         autenticacao = FirebaseAuth.getInstance();
@@ -29,10 +37,21 @@ public class MenuUsuarioActivity extends AppCompatActivity {
             }
         });
 
+        VerPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MeuPerfil();
+            }
+        });
+
     }
 
     private void abrirTelaInicial(){
         Intent intent = new Intent(MenuUsuarioActivity.this,MainActivity.class);
+        startActivity(intent);
+    }
+    private void MeuPerfil(){
+        Intent intent = new Intent(MenuUsuarioActivity.this,MeuPerfilActivity.class);
         startActivity(intent);
     }
 

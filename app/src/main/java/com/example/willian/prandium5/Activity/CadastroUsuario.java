@@ -76,8 +76,11 @@ public class CadastroUsuario extends AppCompatActivity {
                     }
 
                     cadastrarUsuario();
-                    //Intent intent = new Intent(CadastroUsuario.this,MainActivity.class);
-                    //startActivity(intent);
+
+
+
+
+                    //abreMain();
                 }else{
                     Toast.makeText(CadastroUsuario.this,"As senhas não correspondem!",Toast.LENGTH_LONG).show();
                 }
@@ -88,8 +91,7 @@ public class CadastroUsuario extends AppCompatActivity {
         btnSair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CadastroUsuario.this, MainActivity.class);
-                startActivity(intent);
+                abreMain();
             }
         });
 
@@ -106,6 +108,9 @@ public class CadastroUsuario extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     insereUsuario(usuario);
+
+
+
                 }else{
 
                     String erroExcecao="";
@@ -134,12 +139,22 @@ public class CadastroUsuario extends AppCompatActivity {
         try{
             reference = ConfiguracaoFirebase.getFirebase().child("usuarios");
             reference.push().setValue(usuario);
-            Toast.makeText(CadastroUsuario.this,"Usuário cadastrado com Sucesso!",Toast.LENGTH_LONG).show();
+            Toast.makeText(CadastroUsuario.this,"Usuário cadastrado com Sucesso!",Toast.LENGTH_SHORT).show();
+            FirebaseAuth.getInstance().signOut();
+            abreMain();
             return true;
         }catch (Exception e){
             Toast.makeText(CadastroUsuario.this,"Erro ao gravar usuário!",Toast.LENGTH_LONG).show();
             e.printStackTrace();
             return false;
         }
+
+    }
+
+    private void abreMain(){
+        Intent intent = new Intent(CadastroUsuario.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+
     }
 }
