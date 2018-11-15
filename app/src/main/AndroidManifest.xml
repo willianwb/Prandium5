@@ -19,7 +19,8 @@
         <activity android:name=".Activity.CadastroUsuario" />
         <activity android:name=".Activity.MenuLojistaActivity" />
         <activity android:name=".Activity.MenuUsuarioActivity" />
-        <activity android:name=".Activity.MeuPerfilActivity"></activity>
+        <activity android:name=".Activity.MeuPerfilActivity" />
+        <activity android:name=".Activity.EditarPerfilActivity"></activity>
     </application>
 
 </manifest>
