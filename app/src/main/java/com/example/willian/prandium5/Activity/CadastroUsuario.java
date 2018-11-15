@@ -69,6 +69,7 @@ public class CadastroUsuario extends AppCompatActivity {
                     usuario.setCPF(cadcpf.getText().toString());
                     usuario.setSaldo((float)0.0);
 
+
                     if(rbLojista.isChecked()){
                         usuario.setID_TIPO("Lojista");
                     }else{
@@ -138,7 +139,9 @@ public class CadastroUsuario extends AppCompatActivity {
     private boolean insereUsuario(Usuario usuario){
         try{
             reference = ConfiguracaoFirebase.getFirebase().child("usuarios");
-            reference.push().setValue(usuario);
+            String key = reference.push().getKey();
+            usuario.setKeyUsuario(key);
+            reference.child(key).setValue(usuario);
             Toast.makeText(CadastroUsuario.this,"Usuário cadastrado com Sucesso!",Toast.LENGTH_SHORT).show();
             FirebaseAuth.getInstance().signOut();
             abreMain();

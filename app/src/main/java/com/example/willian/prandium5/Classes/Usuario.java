@@ -9,6 +9,7 @@ public class Usuario {
     private Float saldo;
     private String CPF;
     private String ID_TIPO;
+    private String keyUsuario;
 
     public String getEmail() {
         return email;
@@ -58,4 +59,15 @@ public class Usuario {
     public void setSaldo(Float saldo) {
         this.saldo = saldo;
     }
+
+
+    public String getKeyUsuario() {
+        return keyUsuario;
+    }
+
+    public void setKeyUsuario(String keyUsuario) {
+        this.keyUsuario = keyUsuario;
+    }
 }
+
+

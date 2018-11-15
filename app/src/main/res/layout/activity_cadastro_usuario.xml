@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/edtCadNome"
                 android:hint="Nome"
-                android:inputType="textCapCharacters"/>
+                android:inputType="textCapWords"/>
             <EditText
                 android:paddingTop="10sp"
                 android:layout_width="match_parent"

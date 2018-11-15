@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.willian.prandium5.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -56,6 +57,7 @@ public class MenuUsuarioActivity extends AppCompatActivity {
     }
 
     private void deslogarUsuario(){
+        Toast.makeText(MenuUsuarioActivity.this,"Usuário deslogado com sucesso!", Toast.LENGTH_LONG).show();
         autenticacao.signOut();
         abrirTelaInicial();
         finish();
