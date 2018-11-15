@@ -24,12 +24,18 @@
 
         <Button
             android:id="@+id/btnSIM"
+            android:textColor="#FFFFFF"
+            android:layout_margin="5dp"
+            android:background="@layout/botoes_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SIM"/>
 
         <Button
             android:id="@+id/btnNAO"
+            android:textColor="#FFFFFF"
+            android:layout_margin="5dp"
+            android:background="@layout/botoes_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Não" />

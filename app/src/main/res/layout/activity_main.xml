@@ -1,58 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_marginBottom="16dp"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    android:layout_marginTop="16dp"
-    android:gravity="center"
-    tools:context=".Activity.MainActivity">
-
-    <TextView
-        android:id="@+id/txtTitulo"
+    android:layout_height="match_parent">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
         android:gravity="center"
-        android:layout_marginBottom="60dp"
-        android:text="TELA DE LOGIN"
-        android:textSize="25sp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edtEmail"
-        android:hint="E-MAIL"
-        android:inputType="textEmailAddress"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edtSenha"
-        android:hint="Senha"
-        android:inputType="textPassword"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnLogar"
-        android:text="LOGIN" />
-    <TextView
-        android:id="@+id/edtAbreCadastro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
+        tools:context=".Activity.MainActivity">
 
-        android:text="Não tem cadastro? clique aqui"
-        android:textSize="23dp"/>
+        <TextView
+            android:id="@+id/txtTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="60dp"
+            android:text="TELA DE LOGIN"
+            android:textSize="25sp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edtEmail"
+            android:hint="E-MAIL"
+            android:inputType="textEmailAddress"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edtSenha"
+            android:hint="Senha"
+            android:inputType="textPassword"/>
+        <Button
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:layout_width="270dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="100dp"
+            android:background="@layout/botoes_menu"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/btnLogar"
+            android:text="LOGIN" />
+        <TextView
+            android:id="@+id/edtAbreCadastro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
 
-    <TextView
-        android:id="@+id/txtRecuperarSenha"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="Esqueci minha senha"
-        android:textSize="15sp"/>
+            android:text="Não tem cadastro? clique aqui!"
+            android:textSize="23dp"/>
 
-</LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="#FF0000"
+            android:text="Esqueci minha senha"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+</ScrollView>

@@ -1,48 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Activity.MenuLojistaActivity"
-    android:orientation="vertical"
-    android:layout_marginBottom="16dp"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    android:layout_marginTop="16dp"
-    android:gravity="center">
+    android:layout_height="match_parent">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Activity.MenuLojistaActivity"
+        android:orientation="vertical"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="32sp"
-        android:text="MENU LOJISTA"
-        android:layout_marginBottom="50sp"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ver Cardápio"
-        android:id="@+id/btnVerCardapioLojista"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ver Promoções"
-        android:id="@+id/btnPromocaoLojista"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mapa de calor"
-        android:id="@+id/btnMapaDeCalor"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ver Perfil"
-        android:id="@+id/btnVerPerfil"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sair"
-        android:id="@+id/btnSairLojista"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="32sp"
+            android:text="MENU LOJISTA"
+            android:layout_marginBottom="50sp"/>
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btnVerCardapioLojista"
+            android:layout_width="270dp"
+            android:layout_height="54dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:background="@layout/botoes_menu"
+            android:text="Ver Cardápio"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp" />
+        <Button
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:layout_width="270dp"
+            android:layout_height="54dp"
+            android:layout_margin="5dp"
+            android:background="@layout/botoes_menu"
+            android:layout_gravity="center_horizontal"
+            android:text="Ver Promoções"
+            android:id="@+id/btnPromocaoLojista"/>
+
+        <Button
+            android:id="@+id/btnMapaDeCalor"
+            android:layout_width="270dp"
+            android:layout_height="54dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:background="@layout/botoes_menu"
+            android:text="Encontrar lugares"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp" />
+        <Button
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:layout_width="270dp"
+            android:layout_height="54dp"
+            android:layout_margin="5dp"
+            android:background="@layout/botoes_menu"
+            android:layout_gravity="center_horizontal"
+            android:text="Ver Perfil"
+            android:id="@+id/btnVerPerfil"/>
+        <Button
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:layout_width="270dp"
+            android:layout_height="54dp"
+            android:layout_margin="5dp"
+            android:background="@layout/botoes_menu"
+            android:layout_gravity="center_horizontal"
+            android:text="Sair"
+            android:id="@+id/btnSairLojista"/>
+
+    </LinearLayout>
+</ScrollView>

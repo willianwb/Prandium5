@@ -150,20 +150,30 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
+
                 <Button
                     android:id="@+id/btnVoltar"
+                    android:textColor="#FFFFFF"
+                    android:layout_margin="5dp"
+                    android:background="@layout/botoes_menu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Voltar" />
 
                 <Button
                     android:id="@+id/btnEditar"
+                    android:textColor="#FFFFFF"
+                    android:layout_margin="5dp"
+                    android:background="@layout/botoes_menu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Editar" />
 
                 <Button
                     android:id="@+id/btnExcluirConta"
+                    android:textColor="#FFFFFF"
+                    android:layout_margin="5dp"
+                    android:background="@layout/botoes_menu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Excluir Conta" />
