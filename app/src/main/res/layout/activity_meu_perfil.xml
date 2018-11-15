@@ -7,7 +7,7 @@
     android:layout_marginLeft="16dp"
     android:layout_marginTop="16dp"
     android:layout_marginRight="16dp"
-    android:layout_marginBottom="16dp"
+    android:layout_marginBottom="10dp"
     android:orientation="vertical"
     tools:context=".Activity.MeuPerfilActivity">
 
@@ -20,15 +20,25 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16sp"
+                android:text="MEU PERFIL"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="50sp"
+                    android:layout_marginBottom="25sp"
                     android:inputType="text"
                     android:text="NOME: "
                     android:textSize="25sp"
@@ -38,7 +48,7 @@
                     android:id="@+id/txtNomeUsuario"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="50sp"
+                    android:layout_marginBottom="25dp"
                     android:inputType="text"
                     android:text=""
                     android:textSize="25sp" />
@@ -53,7 +63,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="50sp"
+                    android:layout_marginBottom="25sp"
                     android:inputType="text"
                     android:text="CPF: "
                     android:textSize="25sp"
@@ -63,7 +73,7 @@
                     android:id="@+id/txtCPFUsuario"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="50sp"
+                    android:layout_marginBottom="25sp"
                     android:inputType="text"
                     android:text=""
                     android:textSize="25sp" />
@@ -78,7 +88,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="50sp"
+                    android:layout_marginBottom="25sp"
                     android:inputType="text"
                     android:text="E-MAIL: "
                     android:textSize="25sp"
@@ -88,7 +98,7 @@
                     android:id="@+id/txtEMAILUsuario"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="50sp"
+                    android:layout_marginBottom="25sp"
                     android:inputType="text"
                     android:text=""
                     android:textSize="25sp" />
@@ -103,7 +113,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="50sp"
+                    android:layout_marginBottom="25sp"
                     android:inputType="text"
                     android:text="TIPO: "
                     android:textSize="25sp"
@@ -113,7 +123,7 @@
                     android:id="@+id/txtTIPOUsuario"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="50sp"
+                    android:layout_marginBottom="25sp"
                     android:inputType="text"
                     android:text=""
                     android:textSize="25sp" />
@@ -128,7 +138,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="50sp"
+                    android:layout_marginBottom="25sp"
                     android:inputType="text"
                     android:text="SALDO: R$"
                     android:textSize="25sp"
@@ -138,7 +148,7 @@
                     android:id="@+id/txtSALDOUsuario"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="50sp"
+                    android:layout_marginBottom="25sp"
                     android:inputType="text"
                     android:text=""
                     android:textSize="25sp" />

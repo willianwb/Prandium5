@@ -46,7 +46,11 @@ public class MeuPerfilActivity extends AppCompatActivity {
     private FirebaseAuth autenticacao;
     private DatabaseReference reference;
 
-
+    private String txtorigem;
+    private String txtnome;
+    private String txtcpf;
+    private String txtkeyUsuario;
+    private String txtid_tipo;
 
 
     @Override
@@ -72,7 +76,7 @@ public class MeuPerfilActivity extends AppCompatActivity {
         reference.child("usuarios").orderByChild("email").equalTo(emailcheck).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot postSnapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Usuario usuario = postSnapshot.getValue(Usuario.class);
 
                     txtNome.setText(usuario.getNome());
@@ -95,14 +99,14 @@ public class MeuPerfilActivity extends AppCompatActivity {
                 reference.child("usuarios").orderByChild("email").equalTo(emailcheck).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for(DataSnapshot postSnapshot : dataSnapshot.getChildren()){
+                        for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                             tipoUsuario = postSnapshot.child("id_TIPO").getValue().toString();
 
-                            if(tipoUsuario=="Lojista"){
+                            if (tipoUsuario == "Lojista") {
                                 Intent intent = new Intent(MeuPerfilActivity.this, MenuLojistaActivity.class);
                                 startActivity(intent);
                                 finish();
-                            }else{
+                            } else {
                                 Intent intent = new Intent(MeuPerfilActivity.this, MenuUsuarioActivity.class);
                                 startActivity(intent);
                                 finish();
@@ -123,7 +127,7 @@ public class MeuPerfilActivity extends AppCompatActivity {
         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                editarPerfilUsuario(emailcheck);
             }
         });
 
@@ -135,10 +139,9 @@ public class MeuPerfilActivity extends AppCompatActivity {
         });
 
 
-
     }
 
-    private void excluirUsuarioDeslogar(){
+    private void excluirUsuarioDeslogar() {
         final String emailUsuarioLogado = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
         reference = ConfiguracaoFirebase.getFirebase();
@@ -146,7 +149,7 @@ public class MeuPerfilActivity extends AppCompatActivity {
         reference.child("usuarios").orderByChild("email").equalTo(emailUsuarioLogado).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot postSnapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     final Usuario usuario = postSnapshot.getValue(Usuario.class);
 
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -155,17 +158,17 @@ public class MeuPerfilActivity extends AppCompatActivity {
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                   if(task.isSuccessful()){
-                                       Log.d("Usuario_Excluido", "User Deleted");
+                                    if (task.isSuccessful()) {
+                                        Log.d("Usuario_Excluido", "User Deleted");
 
-                                       Toast.makeText(MeuPerfilActivity.this,"O usuário foi excluido com sucesso!", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(MeuPerfilActivity.this, "O usuário foi excluido com sucesso!", Toast.LENGTH_LONG).show();
 
-                                       reference = ConfiguracaoFirebase.getFirebase();
-                                       reference.child("usuarios").child(usuario.getKeyUsuario()).removeValue();
+                                        reference = ConfiguracaoFirebase.getFirebase();
+                                        reference.child("usuarios").child(usuario.getKeyUsuario()).removeValue();
 
 
-                                       abrirTelaPrincipal();
-                                   }
+                                        abrirTelaPrincipal();
+                                    }
                                 }
                             });
                 }
@@ -178,19 +181,19 @@ public class MeuPerfilActivity extends AppCompatActivity {
         });
     }
 
-    private void abrirTelaPrincipal(){
-        Intent intent = new Intent(MeuPerfilActivity.this,MainActivity.class);
+    private void abrirTelaPrincipal() {
+        Intent intent = new Intent(MeuPerfilActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
     }
 
-    private void abrirMeuPerfil(){
-        Intent intent = new Intent(MeuPerfilActivity.this,MeuPerfilActivity.class);
+    private void abrirMeuPerfil() {
+        Intent intent = new Intent(MeuPerfilActivity.this, MeuPerfilActivity.class);
         startActivity(intent);
         finish();
     }
 
-    private void abrirDialogConfirmaExclusao(){
+    private void abrirDialogConfirmaExclusao() {
         final Dialog dialog = new Dialog(this);
 
         dialog.setContentView(R.layout.alert_personalizado_excluir);
@@ -217,4 +220,38 @@ public class MeuPerfilActivity extends AppCompatActivity {
         });
 
     }
+
+    private void editarPerfilUsuario(String emailcheck) {
+        reference = ConfiguracaoFirebase.getFirebase();
+
+        reference.child("usuarios").orderByChild("email").equalTo(emailcheck).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    Usuario usuario = postSnapshot.getValue(Usuario.class);
+                    final Intent intent = new Intent(MeuPerfilActivity.this, EditarPerfilActivity.class);
+
+                    final Bundle bundle = new Bundle();
+                    bundle.putString("origem", "editarUsuario");
+                    bundle.putString("nome", usuario.getNome());
+                    bundle.putString("email",usuario.getEmail());
+                    bundle.putString("cpf", usuario.getCPF());
+                    bundle.putString("keyUsuario", usuario.getKeyUsuario());
+                    bundle.putString("id_tipo", usuario.getID_TIPO());
+                    bundle.putFloat("saldo",usuario.getSaldo());
+
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+
+                    finish();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
 }
