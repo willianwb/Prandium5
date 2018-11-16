@@ -49,19 +49,30 @@
                 android:id="@+id/edtEditConfirmarSenha"
                 android:hint="Confirmar Senha"
                 android:inputType="textPassword"/>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:gravity="center"
+            android:orientation="horizontal">
             <Button
                 android:id="@+id/btnGRAVAR"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="GRAVAR"/>
+                android:layout_margin="5dp"
+                android:textColor="#FFFFFF"
 
+                android:background="@layout/botoes_menu"
+                android:text="GRAVAR"/>
             <Button
                 android:id="@+id/btnCANCELAR"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textColor="#FFFFFF"
+                android:background="@layout/botoes_menu"
                 android:text="CANCELAR" />
-
+        </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
