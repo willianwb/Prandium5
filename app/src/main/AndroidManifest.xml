@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.willian.prandium5">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,7 +24,8 @@
         <activity android:name=".Activity.MenuLojistaActivity" />
         <activity android:name=".Activity.MenuUsuarioActivity" />
         <activity android:name=".Activity.MeuPerfilActivity" />
-        <activity android:name=".Activity.EditarPerfilActivity"></activity>
+        <activity android:name=".Activity.EditarPerfilActivity" />
+        <activity android:name=".Activity.CardapioActivity"></activity>
     </application>
 
 </manifest>

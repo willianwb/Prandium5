@@ -1,8 +1,10 @@
 package com.example.willian.prandium5.Activity;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -53,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         edtAbreCadastro = (TextView) findViewById(R.id.edtAbreCadastro);
         txtRecuperarSenha = (TextView) findViewById(R.id.txtRecuperarSenha);
 
+        permission();
+
         final EditText editTextEmail = new EditText(MainActivity.this);
         editTextEmail.setHint("exemplo@exemplo.com");
 
@@ -67,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                     for(DataSnapshot postSnapshot : dataSnapshot.getChildren()){
                         tipoUsuario = postSnapshot.child("id_TIPO").getValue().toString();
 
-                        if(tipoUsuario=="Lojista"){
+                        if(tipoUsuario.equals("Lojista")){
                             Intent intent = new Intent(MainActivity.this, MenuLojistaActivity.class);
                             startActivity(intent);
                             finish();
@@ -195,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
                             for(DataSnapshot postSnapshot : dataSnapshot.getChildren()){
                                 tipoUsuario = postSnapshot.child("id_TIPO").getValue().toString();
 
-                                if(tipoUsuario=="Lojista"){
+                                if(tipoUsuario.equals("Lojista") ){
                                     Toast.makeText(MainActivity.this,"Login Efetuado com sucesso!",Toast.LENGTH_LONG).show();
                                     Intent intent = new Intent(MainActivity.this, MenuLojistaActivity.class);
                                     startActivity(intent);
@@ -238,5 +242,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void abrirNovaActivity(Intent intent){
         startActivity(intent);
+    }
+
+    public void permission(){
+        int PERMISSION_ALL = 1;
+
+        String [] PERMISSION = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        ActivityCompat.requestPermissions(this, PERMISSION, PERMISSION_ALL);
     }
 }

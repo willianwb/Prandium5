@@ -102,7 +102,7 @@ public class MeuPerfilActivity extends AppCompatActivity {
                         for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                             tipoUsuario = postSnapshot.child("id_TIPO").getValue().toString();
 
-                            if (tipoUsuario == "Lojista") {
+                            if (tipoUsuario.equals("Lojista")) {
                                 Intent intent = new Intent(MeuPerfilActivity.this, MenuLojistaActivity.class);
                                 startActivity(intent);
                                 finish();

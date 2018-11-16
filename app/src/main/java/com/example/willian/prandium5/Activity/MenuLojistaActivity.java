@@ -14,10 +14,8 @@ public class MenuLojistaActivity extends AppCompatActivity {
 
     private Button btnsair;
     private Button VerPromocao;
-    private Button Pedido;
+    private Button VerCardapio;
     private Button MapadeCalor;
-    private Button addCred;
-    private Button Historico;
     private Button VerPerfil;
     private FirebaseAuth autenticacao;
 
@@ -27,6 +25,16 @@ public class MenuLojistaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_lojista);
 
         btnsair = (Button) findViewById(R.id.btnSairLojista);
+
+        VerCardapio = (Button) findViewById(R.id.btnVerCardapioLojista);
+
+        VerCardapio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abrirTelaCardapioLojista();
+            }
+        });
+
         autenticacao = FirebaseAuth.getInstance();
 
         VerPerfil = (Button) findViewById(R.id.btnVerPerfil) ;
@@ -49,6 +57,10 @@ public class MenuLojistaActivity extends AppCompatActivity {
 
     private void abrirTelaInicial(){
         Intent intent = new Intent(MenuLojistaActivity.this,MainActivity.class);
+        startActivity(intent);
+    }
+    private void abrirTelaCardapioLojista(){
+        Intent intent = new Intent(MenuLojistaActivity.this,CardapioActivity.class);
         startActivity(intent);
     }
 
