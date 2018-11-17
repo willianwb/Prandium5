@@ -43,6 +43,8 @@ public class MeuPerfilActivity extends AppCompatActivity {
     private Button btnSim;
     private Button btnNao;
 
+    private Button btnAdicionarCreditos;
+
     private FirebaseAuth autenticacao;
     private DatabaseReference reference;
 
@@ -71,6 +73,7 @@ public class MeuPerfilActivity extends AppCompatActivity {
         btnEditar = (Button) findViewById(R.id.btnEditar);
         btnExlcuirConta = (Button) findViewById(R.id.btnExcluirConta);
         Voltar = (Button) findViewById(R.id.btnVoltar);
+        btnAdicionarCreditos = (Button) findViewById(R.id.btnAdicionarCreditoConta);
 
 
         reference.child("usuarios").orderByChild("email").equalTo(emailcheck).addValueEventListener(new ValueEventListener() {
@@ -120,6 +123,13 @@ public class MeuPerfilActivity extends AppCompatActivity {
 
                     }
                 });
+            }
+        });
+
+        btnAdicionarCreditos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AdicionarCreditosUsuario(emailcheck);
             }
         });
 
@@ -242,6 +252,39 @@ public class MeuPerfilActivity extends AppCompatActivity {
 
                     intent.putExtras(bundle);
                     startActivity(intent);
+
+                    finish();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void AdicionarCreditosUsuario(String emailcheck) {
+        reference = ConfiguracaoFirebase.getFirebase();
+
+        reference.child("usuarios").orderByChild("email").equalTo(emailcheck).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    Usuario usuario = postSnapshot.getValue(Usuario.class);
+                    final Intent intent2 = new Intent(MeuPerfilActivity.this, AddCreditosActivity.class);
+
+                    final Bundle bundle = new Bundle();
+                    bundle.putString("origem", "adicionarCreditos");
+                    bundle.putString("nome", usuario.getNome());
+                    bundle.putString("email",usuario.getEmail());
+                    bundle.putString("cpf", usuario.getCPF());
+                    bundle.putString("keyUsuario", usuario.getKeyUsuario());
+                    bundle.putString("id_tipo", usuario.getID_TIPO());
+                    bundle.putFloat("saldo",usuario.getSaldo());
+
+                    intent2.putExtras(bundle);
+                    startActivity(intent2);
 
                     finish();
                 }

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activity.AddCreditosActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADICIONAR CRÉDITOS"/>
+
+    <EditText
+        android:paddingTop="10sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtCreditos"
+        android:hint="Valor a ser Adicionado na Conta"
+        android:inputType="text"/>
+
+    <EditText
+        android:paddingTop="10sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtAddSenha"
+        android:hint="Senha"
+        android:inputType="textPassword"/>
+    <EditText
+        android:paddingTop="10sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtAddConfirmarSenha"
+        android:hint="Confirmar Senha"
+        android:inputType="textPassword"/>
+
+    <Button
+        android:id="@+id/btnConfirmarAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="ADICIONAR" />
+
+    <Button
+        android:id="@+id/btnAnteriorMenuAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="VOLTAR" />
+
+</LinearLayout>

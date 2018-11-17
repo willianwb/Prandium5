@@ -63,16 +63,6 @@
             android:layout_margin="5dp"
             android:background="@layout/botoes_menu"
             android:layout_gravity="center_horizontal"
-            android:text="Adicionar Créditos"
-            android:id="@+id/btnAddCreditos"/>
-        <Button
-            android:textColor="#FFFFFF"
-            android:textSize="22sp"
-            android:layout_width="270dp"
-            android:layout_height="54dp"
-            android:layout_margin="5dp"
-            android:background="@layout/botoes_menu"
-            android:layout_gravity="center_horizontal"
             android:text="Histórico de Pedidos"
             android:id="@+id/btnVerHistorico"/>
         <Button

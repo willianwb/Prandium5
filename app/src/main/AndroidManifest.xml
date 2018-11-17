@@ -25,7 +25,10 @@
         <activity android:name=".Activity.MenuUsuarioActivity" />
         <activity android:name=".Activity.MeuPerfilActivity" />
         <activity android:name=".Activity.EditarPerfilActivity" />
-        <activity android:name=".Activity.CardapioActivity"></activity>
+        <activity android:name=".Activity.CardapioActivity" />
+        <activity android:name=".Activity.CardapioLojistaActivity" />
+        <activity android:name=".Activity.AdicionarProdutoActivity" />
+        <activity android:name=".Activity.AddCreditosActivity"></activity>
     </application>
 
 </manifest>

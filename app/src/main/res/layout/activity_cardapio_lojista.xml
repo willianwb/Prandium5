@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:layout_margin="16dp"
     android:orientation="vertical"
-    tools:context=".Activity.CardapioActivity">
+    tools:context=".Activity.CardapioLojistaActivity">
+
 
     <TextView
         android:layout_width="match_parent"
@@ -16,9 +17,14 @@
         android:text="CARDÁPIO"
         android:textSize="25dp"
         android:textStyle="bold" />
-
     <Button
-        android:id="@+id/btnVoltarMenuUsuario"
+        android:id="@+id/btnAdicionarProdutos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="ADICIONAR PRODUTO" />
+    <Button
+        android:id="@+id/btnVoltarMenuLojista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -27,10 +33,12 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycleViewTodosProdutos"
         android:layout_width="wrap_content"
-        android:scrollbars="horizontal"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:scrollbars="horizontal">
+
 
     </android.support.v7.widget.RecyclerView>
+
 
 
 </LinearLayout>

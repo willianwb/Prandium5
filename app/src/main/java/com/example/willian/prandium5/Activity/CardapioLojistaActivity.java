@@ -6,10 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
 import com.example.willian.prandium5.Adapter.CardapioAdapter;
 import com.example.willian.prandium5.Classes.Cardapio;
@@ -19,12 +17,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CardapioActivity extends AppCompatActivity {
+public class CardapioLojistaActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerViewCardapio;
 
@@ -33,26 +30,37 @@ public class CardapioActivity extends AppCompatActivity {
     private DatabaseReference referenciaFireBase;
     private Cardapio todosCardapios;
     private LinearLayoutManager mLayoutManagerTodosProdutos;
+    private Button Voltar;
 
-    private Button abrirMenuUsuario;
+    private Button AdicionarProduto;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cardapio);
+        setContentView(R.layout.activity_cardapio_lojista);
 
         mRecyclerViewCardapio = (RecyclerView) findViewById(R.id.recycleViewTodosProdutos);
 
         carregarTodosProdutos();
 
-        abrirMenuUsuario = (Button) findViewById(R.id.btnVoltarMenuUsuario);
+        AdicionarProduto = (Button) findViewById(R.id.btnAdicionarProdutos);
 
-        abrirMenuUsuario.setOnClickListener(new View.OnClickListener() {
+        Voltar = (Button) findViewById(R.id.btnVoltarMenuLojista);
+
+        Voltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                abrirTelaMenuUsuario();
+                abrirMenuLojista();
+            }
+        });
+
+        AdicionarProduto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CardapioLojistaActivity.this,AdicionarProdutoActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -102,12 +110,9 @@ public class CardapioActivity extends AppCompatActivity {
         mRecyclerViewCardapio.setAdapter(adapter);
     }
 
-    private void abrirTelaMenuUsuario(){
-        Intent intent = new Intent(CardapioActivity.this,MenuUsuarioActivity.class);
+    private void abrirMenuLojista(){
+        Intent intent = new Intent(CardapioLojistaActivity.this,MenuLojistaActivity.class);
         startActivity(intent);
         finish();
     }
-
-
-
 }

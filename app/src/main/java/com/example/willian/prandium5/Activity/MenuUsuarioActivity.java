@@ -19,12 +19,15 @@ public class MenuUsuarioActivity extends AppCompatActivity {
     private Button addCred;
     private Button Historico;
     private Button VerPerfil;
+    private Button FazerPedido;
     private FirebaseAuth autenticacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_usuario);
+
+        FazerPedido = (Button) findViewById(R.id.btnFazerPedido);
 
         VerPerfil = (Button) findViewById(R.id.btnVerPerfil) ;
 
@@ -45,6 +48,15 @@ public class MenuUsuarioActivity extends AppCompatActivity {
             }
         });
 
+        FazerPedido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abrirTelaCardapioUsuario();
+            }
+        });
+
+
+
     }
 
     private void abrirTelaInicial(){
@@ -61,5 +73,14 @@ public class MenuUsuarioActivity extends AppCompatActivity {
         autenticacao.signOut();
         abrirTelaInicial();
         finish();
+    }
+
+    private void abrirTelaCardapioUsuario(){
+        Intent intent = new Intent(MenuUsuarioActivity.this,CardapioActivity.class);
+        startActivity(intent);
+    }
+    private void abrirTelaAddCreditos(){
+        Intent intent = new Intent(MenuUsuarioActivity.this,AddCreditosActivity.class);
+        startActivity(intent);
     }
 }

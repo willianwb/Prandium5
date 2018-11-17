@@ -60,7 +60,7 @@ public class MenuLojistaActivity extends AppCompatActivity {
         startActivity(intent);
     }
     private void abrirTelaCardapioLojista(){
-        Intent intent = new Intent(MenuLojistaActivity.this,CardapioActivity.class);
+        Intent intent = new Intent(MenuLojistaActivity.this,CardapioLojistaActivity.class);
         startActivity(intent);
     }
 
