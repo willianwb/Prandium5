@@ -17,12 +17,7 @@
         android:textSize="25dp"
         android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnVoltarMenuUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="VOLTAR" />
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycleViewTodosProdutos"
@@ -32,5 +27,14 @@
 
     </android.support.v7.widget.RecyclerView>
 
+    <Button
+        android:id="@+id/btnVoltarMenuUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:layout_margin="5dp"
+        android:background="@layout/botoes_menu"
+        android:text="VOLTAR" />
 
 </LinearLayout>
