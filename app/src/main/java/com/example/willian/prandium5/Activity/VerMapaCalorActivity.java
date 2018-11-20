@@ -48,21 +48,23 @@ public class VerMapaCalorActivity extends AppCompatActivity {
         // vai ser " "+valorteste+" / 2";
 
 
-        reference.addValueEventListener(new ValueEventListener() {
+        ValueEventListener postListener = new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot postSnapshot : dataSnapshot.getChildren()){
-                    valorteste =postSnapshot.child("Bloco Verde").getValue().toString();
-                    Toast.makeText(VerMapaCalorActivity.this,"O VALOR é "+ valorteste,Toast.LENGTH_LONG).show();
-                }
-
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+                valorteste = dataSnapshot.getValue().toString();
+                txtBlocoVerde.setText(valorteste);
+                // ...
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                //Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                // ...
             }
-        });
+        };
+        FirebaseDatabase.getInstance().getReference().child("Bloco Verde").addValueEventListener(postListener);
 
 
         final String emailcheck = FirebaseAuth.getInstance().getCurrentUser().getEmail();
