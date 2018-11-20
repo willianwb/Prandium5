@@ -46,6 +46,15 @@ public class MenuLojistaActivity extends AppCompatActivity {
             }
         });
 
+        MapadeCalor = (Button) findViewById(R.id.btnMapaDeCalor);
+
+        MapadeCalor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abrirMapadeCalor();
+            }
+        });
+
 
         btnsair.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +70,10 @@ public class MenuLojistaActivity extends AppCompatActivity {
     }
     private void abrirTelaCardapioLojista(){
         Intent intent = new Intent(MenuLojistaActivity.this,CardapioLojistaActivity.class);
+        startActivity(intent);
+    }
+    private void abrirMapadeCalor(){
+        Intent intent = new Intent(MenuLojistaActivity.this,VerMapaCalorActivity.class);
         startActivity(intent);
     }
 

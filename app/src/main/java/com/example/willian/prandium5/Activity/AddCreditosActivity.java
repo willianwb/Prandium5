@@ -42,7 +42,6 @@ public class AddCreditosActivity extends AppCompatActivity {
 
     private Button VoltarMenuPrincipal;
     private Button AddCreditos;
-    private float valor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

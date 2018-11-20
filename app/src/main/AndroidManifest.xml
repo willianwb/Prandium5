@@ -28,7 +28,8 @@
         <activity android:name=".Activity.CardapioActivity" />
         <activity android:name=".Activity.CardapioLojistaActivity" />
         <activity android:name=".Activity.AdicionarProdutoActivity" />
-        <activity android:name=".Activity.AddCreditosActivity"></activity>
+        <activity android:name=".Activity.AddCreditosActivity" />
+        <activity android:name=".Activity.VerMapaCalorActivity"></activity>
     </application>
 
 </manifest>

@@ -54,7 +54,7 @@
             android:background="@layout/botoes_menu"
             android:layout_gravity="center_horizontal"
             android:text="Encontrar lugares"
-            android:id="@+id/btnMapaDeCalor"/>
+            android:id="@+id/btnMapaDeCalorUsuario"/>
         <Button
             android:textColor="#FFFFFF"
             android:textSize="22sp"

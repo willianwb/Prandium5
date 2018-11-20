@@ -55,6 +55,15 @@ public class MenuUsuarioActivity extends AppCompatActivity {
             }
         });
 
+        MapadeCalor = (Button) findViewById(R.id.btnMapaDeCalorUsuario);
+
+        MapadeCalor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AbrirMapadeCalor();
+            }
+        });
+
 
 
     }
@@ -68,6 +77,10 @@ public class MenuUsuarioActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void AbrirMapadeCalor(){
+        Intent intent = new Intent(MenuUsuarioActivity.this,VerMapaCalorActivity.class);
+        startActivity(intent);
+    }
     private void deslogarUsuario(){
         Toast.makeText(MenuUsuarioActivity.this,"Usuário deslogado com sucesso!", Toast.LENGTH_LONG).show();
         autenticacao.signOut();
