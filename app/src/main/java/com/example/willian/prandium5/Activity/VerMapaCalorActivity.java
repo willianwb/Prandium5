@@ -53,7 +53,7 @@ public class VerMapaCalorActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get Post object and use the values to update the UI
                 valorteste = dataSnapshot.getValue().toString();
-                txtBlocoVerde.setText(valorteste);
+                txtBlocoVerde.setText(valorteste+" / 2");
                 // ...
             }
 
